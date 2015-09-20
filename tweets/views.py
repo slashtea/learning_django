@@ -8,9 +8,7 @@ from django.views.generic import View
 class Index(View):
 
     def get(self, request):
-        params = {}
-        params["name"] = "Django"
-        return render(request, "base.html", params)
+        return render(request, "hello.html")
 
     def post(self, request):
         if request.method == 'POST':

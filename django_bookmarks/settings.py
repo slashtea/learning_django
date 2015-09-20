@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'bootstrap3',
     'tweets',
+    'user_profile',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -53,11 +54,14 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'django_bookmarks.urls'
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR + 'tweets/templates'],
+        'DIRS': [
+                os.path.join(BASE_DIR,  'tweets/templates'),
+                os.path.join(BASE_DIR,  'templates'),
+                os.path.join(BASE_DIR, 'user_profile/templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -69,6 +73,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'django_bookmarks.wsgi.application'
 
@@ -102,3 +107,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
